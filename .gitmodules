@@ -1,3 +1,9 @@
 [submodule "obsidian-skills"]
 	path = obsidian-skills
 	url = git@github.com:kepano/obsidian-skills.git
+[submodule "paper-framework-figure-studio-pro"]
+	path = paper-framework-figure-studio-pro
+	url = https://github.com/c-narcissus/paper-framework-figure-studio-pro.git
+[submodule "andrej-karpathy-skills"]
+	path = andrej-karpathy-skills
+	url = https://github.com/forrestchang/andrej-karpathy-skills.git
