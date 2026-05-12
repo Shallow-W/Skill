@@ -28,3 +28,9 @@
 [submodule "paper-ppt-agent"]
 	path = paper-ppt-agent
 	url = https://github.com/CRui5in/paper-ppt-agent.git
+[submodule "Awesome-Prompts"]
+	path = Awesome-Prompts
+	url = https://github.com/dongshuyan/Awesome-Prompts.git
+[submodule "impeccable"]
+	path = impeccable
+	url = https://github.com/pbakaus/impeccable.git

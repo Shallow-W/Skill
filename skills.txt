@@ -8,3 +8,5 @@ nextlevelbuilder/ui-ux-pro-max-skill
 carmahhawwari/ui-design-brain
 Yeachan-Heo/oh-my-claudecode
 CRui5in/paper-ppt-agent
+dongshuyan/Awesome-Prompts
+pbakaus/impeccable
