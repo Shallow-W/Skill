@@ -37,3 +37,6 @@
 [submodule "starghlist"]
 	path = starghlist
 	url = https://github.com/petarov/starghlist.git
+[submodule "oh-my-ppt"]
+	path = oh-my-ppt
+	url = https://github.com/arcsin1/oh-my-ppt.git
