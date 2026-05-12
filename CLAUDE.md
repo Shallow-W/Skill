@@ -2,13 +2,28 @@
 
 This repo manages Claude Code skills as git submodules. GitHub: `https://github.com/Shallow-W/Skill.git`
 
-The user's GitHub star list "skill" (`https://github.com/stars/Shallow-W/lists/skill`) is the source of truth for which repos belong to the skill collection. GitHub does not have a public API for star lists, so use web scraping to read it.
+The GitHub star list "skill" is the source of truth. It is managed via GraphQL API.
+
+## Key constants
+
+- **Skill list ID**: `UL_kwDOBZd3Fs4AehUO`
+- **GraphQL read repos in skill list**:
+  ```bash
+  gh api graphql -f query='{ node(id: "UL_kwDOBZd3Fs4AehUO") { ... on UserList { name items(first: 50) { nodes { ... on Repository { nameWithOwner } } } } } }'
+  ```
+- **GraphQL list all lists**:
+  ```bash
+  gh api graphql -f query='{ viewer { lists(first: 20) { nodes { id name slug } } } }'
+  ```
 
 ## Auto-sync on session start
 
 When a new session starts in this directory, automatically:
 
-1. **Fetch the skill list** by scraping `https://github.com/stars/Shallow-W/lists/skill` using the webReader MCP tool (return_format: text). Parse repo names from lines matching `owner / repo-name`.
+1. **Read skill list** via GraphQL:
+   ```bash
+   gh api graphql -f query='{ node(id: "UL_kwDOBZd3Fs4AehUO") { ... on UserList { name items(first: 50) { nodes { ... on Repository { nameWithOwner } } } } } }' -q '.data.node.items.nodes[].nameWithOwner'
+   ```
 2. Read current submodules from `.gitmodules`.
 3. For any repo in the skill list NOT yet in `.gitmodules`, auto add it:
    ```bash
@@ -26,13 +41,21 @@ When a new session starts in this directory, automatically:
 
 When the user gives a GitHub repo URL (e.g. `https://github.com/foo/bar-skill.git`):
 
-1. **Add to GitHub star list "skill":** Visit `https://github.com/foo/bar-skill` and star it, then add to the "skill" list via browser. (Or use `gh api -X PUT "user/starred/foo/bar-skill"` to star it.)
-2. **Add as submodule:**
+1. **Star the repo:**
+   ```bash
+   gh api -X PUT "user/starred/foo/bar-skill"
+   ```
+2. **Add to skill list** via GraphQL:
+   ```bash
+   REPO_ID=$(gh api graphql -f query='{ repository(owner: "foo", name: "bar-skill") { id } }' -q '.data.repository.id')
+   gh api graphql -f query="mutation { updateUserListsForItem(input: { itemId: \"$REPO_ID\", listIds: [\"UL_kwDOBZd3Fs4AehUO\"] }) { clientMutationId } }"
+   ```
+3. **Add as submodule:**
    ```bash
    git submodule add https://github.com/foo/bar-skill.git bar-skill
    ```
-3. **Update skills.txt** — append `foo/bar-skill`
-4. **Commit and push:**
+4. **Update skills.txt** — append `foo/bar-skill`
+5. **Commit and push:**
    ```bash
    git add .gitmodules skills.txt <submodule-name>
    git commit -m "add <name> submodule"

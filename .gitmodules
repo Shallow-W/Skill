@@ -34,3 +34,6 @@
 [submodule "impeccable"]
 	path = impeccable
 	url = https://github.com/pbakaus/impeccable.git
+[submodule "starghlist"]
+	path = starghlist
+	url = https://github.com/petarov/starghlist.git
