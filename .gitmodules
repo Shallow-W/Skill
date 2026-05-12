@@ -40,3 +40,6 @@
 [submodule "oh-my-ppt"]
 	path = oh-my-ppt
 	url = https://github.com/arcsin1/oh-my-ppt.git
+[submodule "github-starlist-skill"]
+	path = github-starlist-skill
+	url = https://github.com/Shallow-W/github-starlist-skill.git
