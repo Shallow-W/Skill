@@ -2,16 +2,16 @@
 
 This repo manages Claude Code skills as git submodules. GitHub: `https://github.com/Shallow-W/Skill.git`
 
-The GitHub star list "skill" is the source of truth. It is managed via GraphQL API.
+The GitHub star list "skill" is the single source of truth, managed via GraphQL API.
 
 ## Key constants
 
 - **Skill list ID**: `UL_kwDOBZd3Fs4AehUO`
-- **GraphQL read repos in skill list**:
+- **Read skill list repos**:
   ```bash
-  gh api graphql -f query='{ node(id: "UL_kwDOBZd3Fs4AehUO") { ... on UserList { name items(first: 50) { nodes { ... on Repository { nameWithOwner } } } } } }'
+  gh api graphql -f query='{ node(id: "UL_kwDOBZd3Fs4AehUO") { ... on UserList { name items(first: 50) { nodes { ... on Repository { nameWithOwner } } } } } }' -q '.data.node.items.nodes[].nameWithOwner'
   ```
-- **GraphQL list all lists**:
+- **List all lists**:
   ```bash
   gh api graphql -f query='{ viewer { lists(first: 20) { nodes { id name slug } } } }'
   ```
@@ -20,19 +20,15 @@ The GitHub star list "skill" is the source of truth. It is managed via GraphQL A
 
 When a new session starts in this directory, automatically:
 
-1. **Read skill list** via GraphQL:
-   ```bash
-   gh api graphql -f query='{ node(id: "UL_kwDOBZd3Fs4AehUO") { ... on UserList { name items(first: 50) { nodes { ... on Repository { nameWithOwner } } } } } }' -q '.data.node.items.nodes[].nameWithOwner'
-   ```
+1. **Read skill list** via GraphQL (command above).
 2. Read current submodules from `.gitmodules`.
 3. For any repo in the skill list NOT yet in `.gitmodules`, auto add it:
    ```bash
    git submodule add https://github.com/<owner>/<repo>.git <repo-name>
    ```
-4. Update `skills.txt` to match the skill list.
-5. If new submodules were added, commit and push:
+4. If new submodules were added, commit and push:
    ```bash
-   git add .gitmodules skills.txt <new-submodule-paths>
+   git add .gitmodules <new-submodule-paths>
    git commit -m "add <names> submodules"
    git push origin main
    ```
@@ -54,17 +50,15 @@ When the user gives a GitHub repo URL (e.g. `https://github.com/foo/bar-skill.gi
    ```bash
    git submodule add https://github.com/foo/bar-skill.git bar-skill
    ```
-4. **Update skills.txt** — append `foo/bar-skill`
-5. **Commit and push:**
+4. **Commit and push:**
    ```bash
-   git add .gitmodules skills.txt <submodule-name>
+   git add .gitmodules <submodule-name>
    git commit -m "add <name> submodule"
    git push origin main
    ```
 
 ## Conventions
 
-- `skills.txt`: one `owner/repo` per line, kept in sync with the GitHub star list "skill"
 - Submodule directory name: use the repo name (strip `.git` suffix)
 - Commit messages: short, list the added submodule names
 - Always push to `origin/main`
