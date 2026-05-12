@@ -16,3 +16,15 @@
 [submodule "ppt-master-skill"]
 	path = ppt-master-skill
 	url = https://github.com/hugohe3/ppt-master.git
+[submodule "ui-ux-pro-max-skill"]
+	path = ui-ux-pro-max-skill
+	url = https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git
+[submodule "ui-design-brain"]
+	path = ui-design-brain
+	url = https://github.com/carmahhawwari/ui-design-brain.git
+[submodule "oh-my-claudecode"]
+	path = oh-my-claudecode
+	url = https://github.com/Yeachan-Heo/oh-my-claudecode.git
+[submodule "paper-ppt-agent"]
+	path = paper-ppt-agent
+	url = https://github.com/CRui5in/paper-ppt-agent.git
