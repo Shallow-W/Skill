@@ -13,3 +13,6 @@
 [submodule "paper-deep-reading-skill"]
 	path = paper-deep-reading-skill
 	url = https://github.com/Eroticoo/paper-deep-reading-skill.git
+[submodule "ppt-master-skill"]
+	path = ppt-master-skill
+	url = https://github.com/hugohe3/ppt-master.git
