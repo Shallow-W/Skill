@@ -43,3 +43,6 @@
 [submodule "github-starlist-skill"]
 	path = github-starlist-skill
 	url = https://github.com/Shallow-W/github-starlist-skill.git
+[submodule "academic-research-skills"]
+	path = academic-research-skills
+	url = https://github.com/Imbad0202/academic-research-skills.git
