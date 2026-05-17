@@ -46,3 +46,6 @@
 [submodule "academic-research-skills"]
 	path = academic-research-skills
 	url = https://github.com/Imbad0202/academic-research-skills.git
+[submodule "deep-teach"]
+	path = deep-teach
+	url = https://github.com/1786329860/deep-teach.git
