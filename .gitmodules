@@ -49,3 +49,6 @@
 [submodule "deep-teach"]
 	path = deep-teach
 	url = https://github.com/1786329860/deep-teach.git
+[submodule "Auto-claude-code-research-in-sleep"]
+	path = Auto-claude-code-research-in-sleep
+	url = https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep.git
