@@ -52,3 +52,12 @@
 [submodule "Auto-claude-code-research-in-sleep"]
 	path = Auto-claude-code-research-in-sleep
 	url = https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep.git
+[submodule "academic-skills"]
+	path = academic-skills
+	url = https://github.com/chtc66/academic-skills.git
+[submodule "EverOS"]
+	path = EverOS
+	url = https://github.com/EverMind-AI/EverOS.git
+[submodule "planning-with-files"]
+	path = planning-with-files
+	url = https://github.com/OthmanAdi/planning-with-files.git
