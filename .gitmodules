@@ -61,3 +61,6 @@
 [submodule "planning-with-files"]
 	path = planning-with-files
 	url = https://github.com/OthmanAdi/planning-with-files.git
+[submodule "lofisu-identity-engine"]
+	path = lofisu-identity-engine
+	url = https://github.com/zclllyybb/lofisu-identity-engine.git
