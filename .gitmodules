@@ -64,3 +64,6 @@
 [submodule "lofisu-identity-engine"]
 	path = lofisu-identity-engine
 	url = https://github.com/zclllyybb/lofisu-identity-engine.git
+[submodule "superpowers"]
+	path = superpowers
+	url = https://github.com/obra/superpowers.git
